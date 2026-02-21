@@ -1,3 +1,4 @@
+// Package main はセンサーデータ管理APIサーバーを提供する。
 package main
 
 import (
@@ -8,9 +9,9 @@ import (
 
 func NewMux() *http.ServeMux {
 	mux := http.NewServeMux()
-	mux.HandleFunc("GET /health", func(w http.ResponseWriter, r *http.Request) {
+	mux.HandleFunc("GET /health", func(w http.ResponseWriter, _ *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
-		fmt.Fprint(w, `{"status":"ok"}`)
+		_, _ = fmt.Fprint(w, `{"status":"ok"}`)
 	})
 	return mux
 }

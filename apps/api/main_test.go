@@ -15,7 +15,7 @@ func TestHealthEndpoint(t *testing.T) {
 	if err != nil {
 		t.Fatalf("unexpected error: %v", err)
 	}
-	defer resp.Body.Close()
+	defer func() { _ = resp.Body.Close() }()
 
 	t.Run("ステータスコード200を返す", func(t *testing.T) {
 		if resp.StatusCode != http.StatusOK {
