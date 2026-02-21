@@ -34,8 +34,24 @@ IoT でセンサーからのデータを蓄積し、データの可視化を行�
 - 言語：Go
 - http フレームワーク：net/http（標準ライブラリ）
 - データベース：Dynamo DB
+- リンター：golangci-lint v2
+- フォーマッター：golangci-lint v2（gofmt, goimports）
+- デッドコードチェック：golangci-lint v2（unused）
+- 型チェック：golangci-lint v2（typecheck）
 - テスト：testing（標準ライブラリ）
 - e2e テスト： testing + net/http/httptest
+
+## コマンド
+
+### バックエンド（apps/api）
+
+```bash
+# リンター + フォーマッター
+go -C apps/api tool golangci-lint run ./...
+
+# テスト
+go -C apps/api test ./...
+```
 
 ## 行動指針
 
